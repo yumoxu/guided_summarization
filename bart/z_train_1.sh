@@ -3,12 +3,12 @@ TOTAL_NUM_UPDATES=20000
 WARMUP_UPDATES=500      
 LR=3e-05
 MAX_TOKENS=640
-UPDATE_FREQ=16
+UPDATE_FREQ=32
 BART_PATH=/home/s1617290/lacus/model/bart.large/model_${MAX_TOKENS}.pt
 DATA_BIN=$1
 SAVE_DIR=$2
 
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $DATA_BIN \
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py $DATA_BIN \
     --task guided_translation \
     --arch guided_bart_large \
     --criterion label_smoothed_cross_entropy \
